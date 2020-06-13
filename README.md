@@ -1,20 +1,33 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Getting started
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+### Installation
+1. Clone the repository
+git clone https://bildstudio@dev.azure.com/bildstudio/Sandbox/_git/Tetka%20poruducts
+2. Switch to the repo folder
+cd nestjs
+3. Install dependencies
+npm install
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+### Database
+API works with MONGODB database. Get mongodb config data from .env file
+MONGODB_URL='my-mongodb-url'
+DB_TYPE=mongodb
+DB_HOST=localhost
+DB_DATABASE=test
+DB_USERNAME='my-mongodb-username'
+DB_PASSWORD='my-mongodb-password'
+DB_PORT=27017
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+### NPM scripts
+npm run start:dev - Start application
+npm start -- watch - Start application in watch mode
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+### Start application
+
+Test api with http://localhost:3000/api/ in your favourite browser
+
+### Swagger API docs
+This example repo uses the NestJS swagger module for API documentation. NestJS Swagger - www.swagger.io
+
+### Authentication
+This applications uses JSON Web Token (JWT) to handle authentication. The token is passed with each request using the Authorization header with Token scheme. Enter your login/signup data into /auth/signin or /auth/signup body and paste the token into Authorization heather
