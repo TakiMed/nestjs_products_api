@@ -1,3 +1,4 @@
+// TATJANA DODAJ KOMENTARE !
 import { SalesService } from './../sales/sales.service';
 import { SellOrBuyDTO } from './dto/sell-and-buy-dto';
 import { AuthGuard } from '@nestjs/passport';
