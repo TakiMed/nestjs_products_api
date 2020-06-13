@@ -1,0 +1,11 @@
+"title","description","price","quantity","creator","sector","_id","__v"
+"beef","PROD3",15,50,"5ed9eaaeb327df2174cbd8c8","MEAT","5ed9f9cb2cfbc9238cf8253c",
+"chicken","PROD4",7,15,"5ed9eaaeb327df2174cbd8c8","MEAT","5ed9f9cb2cfbc9238cf8253d",
+"fish","PROD6",7,50,"5ed9eaaeb327df2174cbd8ca","SEAFOOD","5ed9f9cb2cfbc9238cf8253f",
+"cherry","PROD2",3,50,"5ed9eaaeb327df2174cbd8cd","FAV","5ed9f9cb2cfbc9238cf8253b",
+"lobster","PROD5",20,50,"5ed9eaaeb327df2174cbd8ca","SEAFOOD","5ed9f9cb2cfbc9238cf8253e",
+"cucamber","PROD10",1.5,50,"5ed9eaaeb327df2174cbd8cd","FAV","5ed9f9cb2cfbc9238cf82543",
+"peach","PROD1",3.5,40,"5ed9eaaeb327df2174cbd8cd","FAV","5ed9f9cb2cfbc9238cf8253a",
+"swiss cheese","PROD8",6.4,50,"5ed9eaaeb327df2174cbd8cc","DAIRY","5ed9f9cb2cfbc9238cf82541",
+"cottagecheese","PROD7",4,50,"5ed9eaaeb327df2174cbd8cc","DAIRY","5ed9f9cb2cfbc9238cf82540",
+"lam milk","PROD9",8,50,"5ed9eaaeb327df2174cbd8cc","DAIRY","5ed9f9cb2cfbc9238cf82542",
