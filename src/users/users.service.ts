@@ -24,15 +24,15 @@ export class UsersService {
     private userModel: Model<User>,
   ) {}
 
+  // only admin can access all users
   async getAllUsers(@GetUser() user): Promise<User[]> {
-    // console.log(user);
     if (user.role === UserRole.ADMIN) {
       return this.userModel.find({}, { __v: 0 });
     } else {
       throw new BadRequestException();
     }
   }
-
+ // function used in auth module
   async signUp(user: CreateUserDto): Promise<any> {
     const username = user.username;
     const existing = await this.userModel.findOne({ username });
@@ -44,6 +44,8 @@ export class UsersService {
     const newUser = await this.userModel.create(user);
     await newUser.save();
   }
+
+  // used in auth module
 
   private async hashPassword(password: string, salt: string): Promise<string> {
     return await bcrypt.hash(password, salt);
@@ -69,6 +71,8 @@ export class UsersService {
       throw new BadRequestException('Invalid signin credentials');
     }
   }
+
+  // in case of emergency admin delets al users
 
   async restoreUsers(@GetUserRole() role): Promise<void> {
     if (role === UserRole.ADMIN) {

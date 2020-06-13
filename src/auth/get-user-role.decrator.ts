@@ -5,6 +5,8 @@ import {
   BadRequestException,
 } from '@nestjs/common';
 
+// get only role --only admins can delete
+
 export const GetUserRole = createParamDecorator(
   async (data, ctx: ExecutionContext): Promise<UserRole> => {
     const req = ctx.switchToHttp().getRequest();

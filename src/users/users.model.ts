@@ -7,10 +7,6 @@ export const UserSchema = new mongoose.Schema({
   role: { type: UserRole, required: true },
   salt: { type: String },
   sector: { type: Sector, required: true },
-  /*products:[{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:'Product'
-      }]*/
 });
 
 export class User extends mongoose.Document {

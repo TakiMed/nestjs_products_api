@@ -12,10 +12,14 @@ export class AuthService {
     private jwtService: JwtService,
   ) {}
 
+    // signup function from users service--check if username already exists and
+    // generate salt and hash password and store into users db collection
+
   async signUp(createUserDto: CreateUserDto) {
     return this.usersService.signUp(createUserDto);
   }
 
+  // validate password , create access token
   async signIn(signInDto: SignInDto): Promise<{ accessToken: string }> {
     const user = await this.usersService.validateUserPassword(signInDto);
     const payload = {

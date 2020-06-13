@@ -10,6 +10,8 @@ import {
 } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
+// I could only implement class validator on dtos-classes, doesnt work on mongoose documents
+
 export class CreateProductDto {
   @IsString()
   @ApiProperty({ type: String, description: 'title' })
@@ -24,6 +26,7 @@ export class CreateProductDto {
   @ApiProperty({ type: Number, description: 'price' })
   price: number;
 
+// must be ceil value
   @IsInt()
   @Min(0)
   @ApiProperty({ type: Number, description: 'quantity' })

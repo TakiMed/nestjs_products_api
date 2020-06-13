@@ -21,6 +21,7 @@ import { ProductSchema } from './product.models';
     PassportModule.register({ defaultStrategy: 'jwt' }),
     AuthModule,
     UsersModule,
+    // insert salary
     forwardRef(()=>SalesModule)
   ],
   controllers: [ProductsController],

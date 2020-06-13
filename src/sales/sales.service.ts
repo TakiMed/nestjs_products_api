@@ -12,7 +12,7 @@ export class SalesService {
       @InjectModel('Sale') private readonly saleModel: Model<Sale>,
       @InjectModel('Product') private readonly productModel: Model<Product>,
     ) {}
-
+// find product by id and generate sale
     async insertSale(
       prodId:string,
       quantity:number,
@@ -27,12 +27,13 @@ export class SalesService {
         newSale.date = new Date();
         newSale.save();
       }
-
+// function written to get all sales, allowed only for managers
     async getAllSales(user){
       if(user.sector==='MAN'){ return await this.saleModel.find({})}
       else throw new BadRequestException('Restricted rights');
     }
 
+// daly sales function, managers only
     async getDailySales(user){
       const sales = await this.getAllSales(user);
       const today = new Date().getTime();
@@ -41,7 +42,7 @@ export class SalesService {
       // await this.productsService.dataToCSV(filtered,'daliysales');
       return filtered;
     }
-
+// creating manual salaries  - onl for test version
     async sellProducts(){
       const prods = await this.productModel.find({});
       prods.forEach((prod)=>this.insertSale(prod._id,5,{sector:prod.sector}));

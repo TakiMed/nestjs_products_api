@@ -1,4 +1,3 @@
-// TATJANA DODAJ KOMENTARE !
 import { SalesService } from './../sales/sales.service';
 import { SellOrBuyDTO } from './dto/sell-and-buy-dto';
 import { AuthGuard } from '@nestjs/passport';
@@ -67,6 +66,7 @@ export class ProductsController {
     @GetUser() user,
     @Query() filterDto: FindProductDto,
   ): Promise<Product[]> {
+// if any searchterms passed call filter function, else get all by user priviledge
     if (Object.keys(filterDto).length) {
       return await this.productsService.getProductsWithFilter(user, filterDto);
     } else {

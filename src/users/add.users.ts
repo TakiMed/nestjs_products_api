@@ -1,3 +1,4 @@
+// mad for manual migrations
 export const USERS = [
     {
         username: 'Manager2',

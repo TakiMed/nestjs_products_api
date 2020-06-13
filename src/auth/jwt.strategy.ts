@@ -14,7 +14,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       secretOrKey: 'TopSecretTM967683hskfsf',
     });
   }
-
+  // using userservice function
   async validate(payload: JwtPayload): Promise<User> {
     const username = payload.username;
     return await this.userService.findByUsername(username, UserRole.ADMIN);

@@ -12,9 +12,11 @@ import { PassportModule } from '@nestjs/passport';
     JwtModule.register({
       secret: 'TopSecretTM967683hskfsf',
       signOptions: {
+        // longer time due to testing phase
         expiresIn: '10000s',
       },
     }),
+    // using user datA
     forwardRef(() => UsersModule),
   ],
   providers: [AuthService, JwtStrategy],

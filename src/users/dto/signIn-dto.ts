@@ -1,8 +1,7 @@
-import { UsersService } from './../users.service';
-import { Sector } from './../user.role.enum';
-import { UserRole } from '../user.role.enum';
 import { IsString, Length, IsIn, Matches } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
+// sign in only with username and password
 
 export class SignInDto {
   @IsString()

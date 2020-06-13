@@ -1,4 +1,5 @@
-import { sendEmail } from './../mailer';
+// testdata, used in manualMigrations function
+
 export const PRODUCTS = [
     {
         title:'peach',

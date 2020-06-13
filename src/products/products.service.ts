@@ -31,7 +31,7 @@ export class ProductsService {
     @InjectModel('User') private readonly userModel: Model<User>,
     private salesService: SalesService,
   ) {}
-
+// insert a prouct into DB and automatically save sector and creator based on user
   async insertProduct(
     product: CreateProductDto,
     @GetUser() user,
@@ -48,10 +48,15 @@ export class ProductsService {
     }
   }
 
+// insert 10 products from different secotrs manually
+
   async manualMigrations(): Promise<string> {
     await this.productModel.insertMany(PRODUCTS);
     return 'PRODUCTS ADDED';
   }
+
+// get products based on user, users can access only products on their sector
+// manager sector users can access all secotrs
 
   async getProducts(@GetUser() user): Promise<Product[]> {
     const sector = user.sector;
@@ -60,11 +65,10 @@ export class ProductsService {
       role === UserRole.USER
         ? await this.productModel.find({ sector }, { __v: 0 }).exec()
         : await this.productModel.find({}, { __v: 0 }).exec();
-
-    await this.dataToCSV(data,'products');
-    // console.log();
     return data;
   }
+
+// filtering products by quantity --more than value and by title/descript --search char
 
   async getProductsWithFilter(
     @GetUser() user,
@@ -85,6 +89,8 @@ export class ProductsService {
     return filtered;
   }
 
+// get products by id, users are allowed to get it only from their sector, manager can access all
+
   async getSingleProduct(prodId: string, @GetUser() user): Promise<any> {
     const sector = user.sector;
     const role = user.role;
@@ -94,6 +100,8 @@ export class ProductsService {
     if(!res) throw new NotFoundException('No such product here');
     return res;
     }
+
+// update single products by user priviledgies
 
   async updateProduct(
     prodId: string,
@@ -116,6 +124,8 @@ export class ProductsService {
     return updatedProduct;
   }
 
+// only administrators can delete products
+
   async deleteProduct(prodId: string, @GetUserRole() role): Promise<string> {
     if (role === UserRole.ADMIN) {
       try {
@@ -128,6 +138,8 @@ export class ProductsService {
       throw new UnauthorizedException('Restricted rights');
     }
   }
+// sell product by id, enter only quantity value, interaction with sales module - creating sale
+// update product quantity in products collection and insert salary in sales coll
 
   async sell(prodId: string, quant: number, @GetUser() user): Promise<Product> {
     const prod = await this.productModel.findOne({ _id: prodId });
@@ -145,6 +157,8 @@ export class ProductsService {
     else { throw new BadRequestException('Unauthorized request');}
   }
 
+// buy products by id, enter only quantity value, update products qunatity in products collection
+
   async buy(prodId: string, quant: number): Promise<Product> {
     const prod = await this.productModel.findOne({ _id: prodId });
     const newQuan = prod.quantity + quant;
@@ -153,8 +167,9 @@ export class ProductsService {
     return this.productModel.findById({prodId});
   }
 
+// function used for mailer attachments and can be used for any reports needed
+
   async dataToCSV(data,filename) {
-    // console.log(data[0].keys());
     const fields = Object.keys(data[0].schema.paths);
     const csvParser = new json2csv.Parser({ fields });
     const csv = await csvParser.parse(data);
@@ -164,6 +179,8 @@ export class ProductsService {
       }
     });
   }
+
+// stock  - prodname and totalAmount : quantity*price
 
   async myStock(): Promise<any> {
     const res = await this.productModel
@@ -184,7 +201,9 @@ export class ProductsService {
     });
   }
 
-  @Cron('0 55 * * * *')
+// send mails with 2 reports attached on closing hour, currently sent to @testninalogdts@gmail.com
+
+  @Cron('0 0 17 * * *')
   async handleCron() {
     const prodData = await this.getProducts({sector:'MAN',role:'ADMIN'});
     const salesData = await this.salesService.getDailySales({sector:'MAN'});
