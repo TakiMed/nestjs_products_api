@@ -10,7 +10,7 @@
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start --watch",
-    "start:dev": "cross-env TS_NODE_TRANSPILE_ONLY=true nodemon --config nodemon-debug.json",
+    "start:dev": "cross-env NODE_ENV=development TS_NODE_TRANSPILE_ONLY=true nest start",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "tslint -p tsconfig.json -c tslint.json",

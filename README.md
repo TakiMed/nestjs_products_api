@@ -31,7 +31,8 @@ MONGODB_URL='my-mongodb-url'
 ```
 
 ### Start application
-Test api with http://localhost:3000/api in your favourite browser
+Test API locally with http://localhost:3000/api in your favourite browser
+Check up on API web version with  ....... in your favourite browser
 
 ### Swagger API docs
 This example repo uses the NestJS swagger module for API documentation. NestJS Swagger - www.swagger.io

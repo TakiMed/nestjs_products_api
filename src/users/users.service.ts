@@ -83,7 +83,8 @@ export class UsersService {
       });
     } else throw new UnauthorizedException();
   }
-
+  // do not use it because of salt
+  /*
   async manualMigrations(): Promise<string> {
     const users = USERS.map((user) => {
       user.salt = bcrypt.genSaltSync();
@@ -93,4 +94,5 @@ export class UsersService {
     await this.userModel.insertMany(users);
     return 'USERS ADDED';
   }
+  */
 }

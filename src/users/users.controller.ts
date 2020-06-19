@@ -39,11 +39,13 @@ export class UsersController {
   async addUser(@Body() user: CreateUserDto): Promise<any> {
     return await this.userService.signUp(user);
   }
-
+  // do not use this function, users already added
+  /*
   @Post('/migrate')
   async migrate(){
     return await this.userService.manualMigrations();
   }
+  */
   @Get('/all')
   async getAllUsers(@GetUser() user): Promise<User[]> {
     console.log(user);
