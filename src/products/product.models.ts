@@ -4,6 +4,7 @@ import * as mongoose from 'mongoose';
 export const ProductSchema = new mongoose.Schema({
   title: { type: String, required: true },
   description: { type: String, required: true }, // JS type
+  imgUrl: { type:String, required: false },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
@@ -14,6 +15,7 @@ export class Product extends mongoose.Document {
   _id: string;
   title: string;
   description: string;
+  imgUrl: string;
   price: number;
   quantity: number;
   creator: {

@@ -1,7 +1,6 @@
 import { PRODUCTS } from './add.products';
 import { SalesService } from './../sales/sales.service';
 import { FindProductDto } from './dto/find-prod-dto';
-import { SellOrBuyDTO } from './dto/sell-and-buy-dto';
 import { sendEmail } from './../mailer';
 import { UserRole, Sector } from './../users/user.role.enum';
 import { Cron } from '@nestjs/schedule';
@@ -129,6 +128,10 @@ export class ProductsService {
   async deleteProduct(prodId: string, @GetUserRole() role): Promise<string> {
     if (role === UserRole.ADMIN) {
       try {
+        if(prodId==='all'){
+          await this.productModel.deleteMany({});
+          return `You've cleared the collection`;
+        }
         await this.productModel.deleteOne({ _id: prodId }).exec();
         return `Product with id ${prodId} deleted`;
       } catch (error) {

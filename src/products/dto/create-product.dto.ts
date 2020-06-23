@@ -22,6 +22,10 @@ export class CreateProductDto {
   @ApiProperty({ type: String, description: 'desc' })
   description: string;
 
+  @IsString()
+  @ApiProperty({type: String, description: 'img url'})
+  imgUrl:string;
+
   @IsNumber()
   @ApiProperty({ type: Number, description: 'price' })
   price: number;
