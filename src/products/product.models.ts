@@ -25,4 +25,5 @@ export class Product extends mongoose.Document {
   sector:Sector;
 }
 
+
 module.exports = mongoose.model('Product', ProductSchema);
