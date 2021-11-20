@@ -5,11 +5,13 @@ This API uses [nestJS](https://docs.nestjs.com/) framework version 7.1.0 and is 
 ### Run app locally
 1. Clone the repository
 ```
-git clone https://bildstudio@dev.azure.com/bildstudio/Sandbox/_git/Tetka%20poruducts
+git clone https://github.com/TakiMed/nestjs_products_api.git
+git clone https://bildstudio@dev.azure.com/bildstudio/Sandbox/_git/Tetka%20poruducts for BILDStudio employees
 ```
 2. Switch to the repo folder
 ```
-cd Tetka%20products
+cd nestjs_products_api
+cd Tetka%20products for BILDStudio employees
 ```
 3. Install dependencies
 ```
@@ -33,6 +35,7 @@ MONGODB_URL='my-mongodb-url'
 ### Start application
 Test API locally with http://localhost:3000/api in your favourite browser
 Check up on API web version with  ....... in your favourite browser
+Check up on API web Heroku version on https://nestjs-products-api-tm.herokuapp.com/
 
 ### Swagger API docs
 This example repo uses the NestJS swagger module for API documentation. NestJS Swagger - www.swagger.io
